@@ -32,8 +32,14 @@ def get_character_movies_from_api(character)
 end
 
 def parse_character_movies(films_hash)
-  films_hash.each_with_index {|film,i|
-    puts "#{i + 1}. #{film["title"]}"
+  films_arr = []
+  films_hash.each {|film|
+    films_arr << "Episode #{film["episode_id"]}: #{film["title"]}"
+  }
+
+
+  films_arr.sort_by {|film| film[8].to_i}.each { |film|
+    puts film
   }
 end
 
